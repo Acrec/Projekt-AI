@@ -14,6 +14,12 @@ namespace Projekt_AI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "StaticPages",
+                url: "Pages/(name).html",
+                defaults: new { Controller = "Home", Action = "StaticPages" }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

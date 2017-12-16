@@ -18,11 +18,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Coś do chleba", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("O nas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Społaczność", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Pomoc", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Regulamin", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Kontakt", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("O nas", "Aboutus", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Pomoc", "Help", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Regulamin", "Reg", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -35,7 +35,7 @@
         @RenderBody()
         <hr />
         <footer>
-       
+   
             <div id="footerLogo">
             </div>
             <div id="footerCopyright">
