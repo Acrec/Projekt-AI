@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Projekt_AI.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Zamówienia</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Adress_Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Building_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_City)
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Adress_Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Building_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_City)
+            </td>
+           
+            <td>
+                <p>@Html.ActionLink("Szczagóły", "Index", "DeliveryDetails",new { id=item.Order_ID },null)</p>
+
+            </td>
+        </tr>
+    }
+
+</table>
+<p>@Html.ActionLink("Przejdź do strony użytkownika", "Index", "Usert")</p>

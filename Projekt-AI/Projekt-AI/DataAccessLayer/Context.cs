@@ -17,7 +17,7 @@ namespace Projekt_AI.DataAccessLayer
         }
         public DbSet<Menu> Menu { get; set; }
         public DbSet<Order> Order { get; set; }
-        public DbSet<Position_on_Order> Position_on_Order { get; set; }
+        public DbSet<Order_Details> Order_Details { get; set; }
         public DbSet<Restaurant> Restaurant { get; set; }
         public DbSet<User> User { get; set; }
 

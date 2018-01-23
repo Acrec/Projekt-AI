@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Projekt_AI.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Projekt_AI.Controllers
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name=" =viewport" content="width=device-width" />
+    <title>Koszyk</title>
+
+
+</head>
+<body>
+
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th> Usuń z koszyka </th>
+            <th>Kontynuj zakupy</th>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Ilość</th>
+            <th>Cena całkowita</th>
+
+        </tr>
+        @{
+        Double s = 0;
+        int index = 1;
+
+        }
+        @foreach (var item in (List<Item>)Session["cart"])
+        {
+            s = s + item.Cart.Food_Price * item.Quantity;
+        <tr>
+            <td>@Html.ActionLink("Usuń z koszyka", "Delete", "ShoppingCart", new { id = item.Cart.Menu_ID }, null)</td>
+            <td> @Html.ActionLink("Kontynuj zakupy", "Menu", "Menu", new { id = item.Cart.Rest_ID }, null)</td>
+            <td>@item.Cart.Food_name </td>
+            <td>@item.Cart.Food_Price </td>
+            <td>@item.Quantity </td>
+            <td>
+                @(item.Cart.Food_Price * item.Quantity)
+            @{index++;}
+        </td>
+
+        </tr>
+          }
+        <tr>
+            <td align="right" colspan="5"> Suma
+
+            </td>
+            <td>@s  @{Session["Price"] = s; } </td>
+           
+        </tr>
+
+}
+    </table>
+    <td> @Html.ActionLink("Złóż zamówienie", "Index", "Order")</td>
+    <br />
+
+
+</body>
+</html>

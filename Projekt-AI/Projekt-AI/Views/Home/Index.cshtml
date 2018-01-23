@@ -1,7 +1,108 @@
-﻿
+﻿@model Projekt_AI.Models.User
 @{
     ViewBag.Title = null;
+
+    if (Session["user_id"] != null)
+    {
+
+        Response.Redirect(Url.Action("Index", "Usert"));
+
+    }
+   
 }
 
-<h2>Główna</h2>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        # login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+    <div id=" login-div">
+        @using (Html.BeginForm("User_Page", "Home", FormMethod.Post))
+        {
+            <table>
+                <tr></tr>
+                <tr>
+
+                    <td>
+                        @Html.LabelFor(model => model.Nickname)
+
+                        @Html.EditorFor(model => model.Nickname)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.Nickname)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Password)
+                        @Html.EditorFor(model => model.Password)
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.Loginerrmsg) </label>
+
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="name" value="Zaloguj" />
+                        <input type="reset" name="name" value="Wyczyść" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <a href="@Url.Action("AddorEdit","Usert")"> Zarejestruj</a>
+
+                </tr>
+            </table>
+
+
+
+        }
+
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+
+
+</html>
+
 

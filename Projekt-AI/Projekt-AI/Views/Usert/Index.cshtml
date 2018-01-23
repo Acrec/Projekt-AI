@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["user_id"] == null)
+    {
+
+        Response.Redirect(Url.Action("Index","Home"));
+
+    }
+}
+
+<h2>Strona Użytkownika.</h2>
+
+<td>
+    Użytkownik: @Session["nickname"].ToString();
+    <p> <a href="@Url.Action("LogOut","Home")"> Wyloguj</a></p>
+    <p> <a href="@Url.Action("LogOut","Home")"> Edytuj</a></p>
+   <p> <a href="@Url.Action("Restaurant","Restaurant")"> Szukaj restauracji</a></p>
+   <p>@Html.ActionLink("Zamówienia", "Index", "Delivery", new { id = System.Convert.ToInt32(Session["user_id"].ToString()) }, null)</p>
+
+</td>
+    
+
+

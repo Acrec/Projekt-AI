@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Projekt_AI.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Restaurant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    
+}
+
+<h2>Restauracje w twoim mieście</h2>
+
+<p>
+    Szukaj w mieście
+</p>
+<p>
+    @using (Html.BeginForm("Restaurant","Restaurant",FormMethod.Get))
+    {
+    @Html.TextBox("search") <input type="submit" value="Szukaj" />
+    }
+</p>
+<table class="table" border="1">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery_Price)
+        </th>
+        <th> Zamów </th>
+    </tr>
+@if (Model.Count() == 0)
+{
+<tr>
+    <td colspan="6">Nie znaleziono restauracji</td>
+</tr>
+
+}
+@foreach (var item in Model)
+{
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Street)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Building_number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.City)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Delivery_Price)
+    </td>
+    <td>
+      @Html.ActionLink("Przejdź do menu", "Menu", "Menu", new { id = item.Res_ID}, null)  
+
+
+    </td>
+</tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Powrót do strony użytkownika","Index","Home")
+</p>
